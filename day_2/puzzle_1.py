@@ -1,5 +1,10 @@
 with open('day_2/input.txt','r') as file:
-    print(sum(int(i) for x in [[string.split("-")[0],string.split("-")[1]] for string in file.read().split(",")] for i in range(int(x[0]), int(x[1])+1) if str(i)[:len(str(i))//2]==str(i)[len(str(i))//2:]))
+    print(sum(i for x in [[string.split("-")[0],string.split("-")[1]] for string in file.read().split(",")] for i in range(int(x[0]), int(x[1])+1) if str(i)[:len(str(i))//2]==str(i)[len(str(i))//2:]))
+
+
+
+
+
 
 
 
