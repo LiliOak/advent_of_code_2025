@@ -1,0 +1,28 @@
+with open('day_5/input.txt', 'r') as file:
+    data = file.read().split("\n\n")
+    ranges = []
+    fresh_id_ranges = data[0].split("\n")
+    
+    for range_str in fresh_id_ranges:
+        start, end = map(int, range_str.split("-"))
+        ranges.append((start, end))
+    
+    ranges.sort(key=lambda x: x[0])
+    merged_ranges = []
+
+    current_start, current_end = ranges[0]
+    
+    for start, end in ranges[1:]: # merge overlapping ranges
+        if start <= current_end + 1:
+            current_end = max(current_end, end)
+        else:
+            merged_ranges.append((current_start, current_end))
+            current_start, current_end = start, end
+    
+    merged_ranges.append((current_start, current_end))
+    
+    total = 0
+    for start, end in merged_ranges:
+        total += (end - start + 1)
+    
+    print(total)

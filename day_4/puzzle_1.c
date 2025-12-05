@@ -28,15 +28,15 @@ int main() {
     for (int i=0; i<144; i++) {minesweeps[i]=0;}
     for (int y=0; y<12; y++){
         for (int x=0; x<12; x++){
-            if (toiletpaper[(y-1)*12+x]){
-                minesweeps[(y-1)*12+x-1] += 1;
-                minesweeps[(y-1)*12+x+1] += 1;
-                minesweeps[(y)*12+x+1] += 1;
-                minesweeps[(y)*12+x] += 1;
-                minesweeps[(y)*12+x-1] += 1;
-                minesweeps[(y+1)*12+x+1] += 1;
-                minesweeps[(y+1)*12+x] += 1;
-                minesweeps[(y+1)*12+x-1] += 1;
+            if (toiletpaper[y*12+x]){
+               minesweeps[y * 12 + x - 1] += 1;
+                minesweeps[y * 12 + x + 1] += 1;
+                minesweeps[(y - 1) * 12 + x] += 1;
+                minesweeps[(y + 1) * 12 + x] += 1;
+                minesweeps[(y - 1) * 12 + x - 1] += 1;
+                minesweeps[(y - 1) * 12 + x + 1] += 1;
+                minesweeps[(y + 1) * 12 + x - 1] += 1;
+                minesweeps[(y + 1) * 12 + x + 1] += 1;      
             }
         }
     }

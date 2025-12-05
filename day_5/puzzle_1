@@ -1,0 +1,21 @@
+with open('day_5/input.txt', 'r') as file:
+    data = file.read().split("\n\n")
+    
+    # Store ranges as (start, end) tuples instead of expanding all IDs
+    ranges = []
+    fresh_id_ranges = data[0].split("\n")
+    
+    for range_str in fresh_id_ranges:
+        start, end = map(int, range_str.split("-"))
+        ranges.append((start, end))
+    
+    def is_in_ranges(num):
+        for start, end in ranges:
+            if start <= num <= end:
+                return True
+        return False
+    
+    check_ids = map(int, data[1].strip().split("\n"))
+    total = sum(1 for id_num in check_ids if is_in_ranges(id_num))
+    
+    print(total)
